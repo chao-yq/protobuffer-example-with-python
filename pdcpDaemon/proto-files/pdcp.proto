@@ -1,0 +1,17 @@
+syntax = "proto3";
+package pdcp;
+message pdu {
+    int32 RX_HFN = 1;
+    int32 PDCP_SN = 2;
+}
+message pdcp {
+    repeated pdu pdu = 1;
+}
+
+message manageInfo {
+    int32 Maximum_PDCP_SN = 1;
+    int32 RX_HFN = 2;
+    int32 Reordering_Window = 3;
+    int32 Next_PDCP_RX_SN = 4;
+    int32 Last_Submitted_PDCP_RX_SN = 5;
+}
