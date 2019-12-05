@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "pdcpDaemon/proto-files/pdcp.proto";
+import "pdcpDaemon/pdcp.proto";
 package stored;
 message stored{
     message SNBuffer{
