@@ -4,7 +4,7 @@ syntax = "proto3";
 package stored;
 message stored{
     message SNBuffer{
-        repeated int32 sn = 1;
+        repeated pdcp.pdu pdu = 1;
         int32 bufferSize = 2;
     }
     SNBuffer buffer = 1;
