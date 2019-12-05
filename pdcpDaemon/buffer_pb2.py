@@ -13,7 +13,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import pdcp_pb2 as pdcp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='stored',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0c\x62uffer.proto\x12\x06stored\x1a\npdcp.proto\"i\n\x06stored\x12\'\n\x06\x62uffer\x18\x01 \x01(\x0b\x32\x17.stored.stored.SNBuffer\x1a\x36\n\x08SNBuffer\x12\x16\n\x03pdu\x18\x01 \x03(\x0b\x32\t.pdcp.pdu\x12\x12\n\nbufferSize\x18\x02 \x01(\x05\x62\x06proto3')
-  ,
-  dependencies=[pdcp__pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n\x0c\x62uffer.proto\x12\x06stored\"]\n\x06stored\x12\'\n\x06\x62uffer\x18\x01 \x01(\x0b\x32\x17.stored.stored.SNBuffer\x1a*\n\x08SNBuffer\x12\n\n\x02sn\x18\x01 \x03(\x05\x12\x12\n\nbufferSize\x18\x02 \x01(\x05\x62\x06proto3')
+)
 
 
 
@@ -36,8 +34,8 @@ _STORED_SNBUFFER = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='pdu', full_name='stored.stored.SNBuffer.pdu', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      name='sn', full_name='stored.stored.SNBuffer.sn', index=0,
+      number=1, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -61,8 +59,8 @@ _STORED_SNBUFFER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=87,
-  serialized_end=141,
+  serialized_start=75,
+  serialized_end=117,
 )
 
 _STORED = _descriptor.Descriptor(
@@ -91,11 +89,10 @@ _STORED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36,
-  serialized_end=141,
+  serialized_start=24,
+  serialized_end=117,
 )
 
-_STORED_SNBUFFER.fields_by_name['pdu'].message_type = pdcp__pb2._PDU
 _STORED_SNBUFFER.containing_type = _STORED
 _STORED.fields_by_name['buffer'].message_type = _STORED_SNBUFFER
 DESCRIPTOR.message_types_by_name['stored'] = _STORED
