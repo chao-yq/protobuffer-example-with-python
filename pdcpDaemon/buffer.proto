@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-import "pdcpDaemon/pdcp.proto";
+//import "pdcp.proto";
 package stored;
 message stored{
     message SNBuffer{
-        repeated pdcp.pdu pdu = 1;
+        repeated int32 sn = 1;
         int32 bufferSize = 2;
     }
     SNBuffer buffer = 1;
