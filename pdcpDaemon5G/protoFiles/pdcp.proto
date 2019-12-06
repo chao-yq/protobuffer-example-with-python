@@ -1,0 +1,43 @@
+syntax = "proto3";
+package pdcp;
+
+message COUNT {
+    //RCVD_SN: the PDCP SN of the received PDCP Data PDU, included in the PDU header;
+    int32 SN = 1;
+    //RCVD_HFN: the HFN of the received PDCP Data PDU, calculated by the receiving PDCP entity;
+    int32 HFN = 2;
+}
+message pdu {
+    //RCVD_COUNT: the COUNT of the received PDCP Data PDU = [RCVD_HFN, RCVD_SN].
+    COUNT RCVD_COUNT = 1;
+}
+message pdcp {
+    repeated pdu pdu = 1;
+    state state = 2;
+}
+
+message state {
+    //-	HFN(State Variable): the HFN part (i.e. the number of most
+    // significant bits equal to HFN length) of the State Variable;
+    int32 HFN = 1;
+    //-	SN(State Variable): the SN part (i.e. the number of least significant bits equal to PDCP SN length) of the State Variable;
+    int32 SN = 2;
+    //This state variable indicates the COUNT value of the next PDCP SDU expected to be received. The initial value is 0.
+    COUNT RX_NEXT = 3;
+    // This state variable indicates the COUNT value of the first PDCP SDU not delivered to the upper layers, but still waited for. The initial value is 0
+    COUNT RX_DELIV = 4;
+    //This state variable indicates the COUNT value following the COUNT value associated with the PDCP Data PDU which triggered t-Reordering.
+    COUNT RX_REORD = 5;
+    //The duration of the timer is configured by upper layers TS 38.331 [3]. This timer is used to detect loss of PDCP Data PDUs as specified in clause 5.2.2. If t-Reordering is running, t-Reordering shall not be started additionally, i.e. only one t-Reordering per receiving PDCP entity is running at a given time.
+    int32 t_Reordering = 6;
+    //This constant indicates the size of the reordering window. The value equals to 2[pdcp-SN-SizeDL] – 1
+    int32 Window_Size = 7;
+
+
+}
+
+message stored {
+    repeated pdu sdu = 1;
+    int32 bufferSize = 2;
+
+}
